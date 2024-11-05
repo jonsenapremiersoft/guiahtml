@@ -6,7 +6,7 @@
 [2. Tags de Texto Essenciais](#tags-de-texto-essenciais)   
 [3. Tags de Listas](#tags-de-listas)   
 [4. Tags de Mídia](#tags-de-mídia)   
-
+[5. Tag DIV](#tag-div)   
 
 # Tags Estruturais
 
@@ -983,4 +983,231 @@
         Transcrição do vídeo
     </a>
 </video>
+```
+
+# Tag DIV
+
+## O que é a `<div>`
+A `<div>` (division) é uma tag de contêiner genérica que serve para agrupar outros elementos HTML. Ela não tem significado semântico próprio - é usada puramente para fins de layout e organização do conteúdo.
+
+## Quando Usar
+```html
+<!-- ✅ USAR quando precisar: -->
+
+<!-- 1. Criar layouts e grids -->
+<div class="grid">
+    <div class="grid-item">Item 1</div>
+    <div class="grid-item">Item 2</div>
+</div>
+
+<!-- 2. Agrupar elementos relacionados -->
+<div class="product-card">
+    <img src="product.jpg" alt="Produto">
+    <h3>Nome do Produto</h3>
+    <p>Descrição</p>
+    <button>Comprar</button>
+</div>
+
+<!-- 3. Criar contêineres para estilização -->
+<div class="background-blue padding-20">
+    <p>Conteúdo com fundo azul e padding</p>
+</div>
+
+<!-- 4. Wrappers para JavaScript -->
+<div id="app" data-component="slider">
+    <!-- Conteúdo manipulado por JS -->
+</div>
+```
+
+## Quando NÃO Usar
+```html
+<!-- ❌ NÃO USAR quando existir uma tag semântica apropriada -->
+
+<!-- Ruim: -->
+<div class="article">
+    <div class="title">Título</div>
+    <div class="content">Conteúdo</div>
+</div>
+
+<!-- Bom: -->
+<article>
+    <h1>Título</h1>
+    <p>Conteúdo</p>
+</article>
+
+<!-- Ruim: -->
+<div class="navigation">
+    <div class="nav-item">Home</div>
+</div>
+
+<!-- Bom: -->
+<nav>
+    <a href="/">Home</a>
+</nav>
+```
+
+## Padrões de Uso Comuns
+
+### 1. Layout Grid
+```html
+<div class="grid-container">
+    <div class="grid-row">
+        <div class="grid-col">Coluna 1</div>
+        <div class="grid-col">Coluna 2</div>
+        <div class="grid-col">Coluna 3</div>
+    </div>
+</div>
+```
+
+### 2. Cartões de Conteúdo
+```html
+<div class="card">
+    <div class="card-header">
+        <h3>Título do Cartão</h3>
+    </div>
+    <div class="card-body">
+        <p>Conteúdo do cartão</p>
+    </div>
+    <div class="card-footer">
+        <button>Ação</button>
+    </div>
+</div>
+```
+
+### 3. Wrappers de Layout
+```html
+<div class="page-wrapper">
+    <div class="content-wrapper">
+        <div class="main-content">
+            <!-- Conteúdo principal -->
+        </div>
+        <div class="sidebar">
+            <!-- Barra lateral -->
+        </div>
+    </div>
+</div>
+```
+
+### 4. Componentes de Interface
+```html
+<div class="modal" role="dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Título do Modal</h2>
+            <button class="close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <!-- Conteúdo do modal -->
+        </div>
+    </div>
+</div>
+```
+
+## Boas Práticas
+
+### 1. Nomeação de Classes
+```html
+<!-- Use classes descritivas e significativas -->
+<div class="product-list">
+    <div class="product-card">
+        <div class="product-image">
+            <img src="product.jpg" alt="Produto">
+        </div>
+        <div class="product-info">
+            <div class="product-title">Nome</div>
+            <div class="product-price">R$ 99,90</div>
+        </div>
+    </div>
+</div>
+```
+
+### 2. Estrutura e Aninhamento
+```html
+<!-- Mantenha uma estrutura clara e organizada -->
+<div class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!-- Evite aninhar muitas divs sem necessidade -->
+                <div class="content">
+                    <!-- Conteúdo -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### 3. Acessibilidade
+```html
+<!-- Adicione atributos ARIA quando necessário -->
+<div 
+    role="tabpanel" 
+    aria-labelledby="tab-1"
+    class="tab-content"
+>
+    <!-- Conteúdo da aba -->
+</div>
+
+<!-- Use data-attributes para JavaScript -->
+<div 
+    class="accordion"
+    data-component="accordion"
+    data-active="false"
+>
+    <!-- Conteúdo do acordeão -->
+</div>
+```
+
+## Exemplos de Uso com Frameworks
+
+### 1. Bootstrap
+```html
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <!-- Conteúdo -->
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### 2. Tailwind CSS
+```html
+<div class="flex flex-col md:flex-row">
+    <div class="w-full md:w-1/2 p-4">
+        <div class="bg-white rounded-lg shadow-md">
+            <!-- Conteúdo -->
+        </div>
+    </div>
+</div>
+```
+
+## Dicas de Performance
+
+```html
+<!-- Use data-attributes para seletores de JavaScript -->
+<div 
+    data-component="slider"
+    data-options='{"autoplay": true, "speed": 500}'
+>
+    <!-- Conteúdo -->
+</div>
+
+<!-- Evite divs desnecessárias -->
+<!-- Ruim -->
+<div class="wrapper">
+    <div class="container">
+        <div class="content">
+            <p>Texto</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bom -->
+<div class="container">
+    <p>Texto</p>
+</div>
 ```
