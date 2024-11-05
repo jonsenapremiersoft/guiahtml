@@ -7,6 +7,9 @@
 [3. Tags de Listas](#tags-de-listas)   
 [4. Tags de Mídia](#tags-de-mídia)   
 [5. Tag DIV](#tag-div)   
+[6. Tags Semânticas](#tags-semânticas)   
+
+
 
 # Tags Estruturais
 
@@ -1211,3 +1214,250 @@ A `<div>` (division) é uma tag de contêiner genérica que serve para agrupar o
     <p>Texto</p>
 </div>
 ```
+
+
+# Tags Semânticas
+
+## O que são Tags Semânticas?
+Tags semânticas são elementos HTML que carregam significado sobre seu conteúdo, ajudando tanto desenvolvedores quanto navegadores a entenderem a estrutura e a importância do conteúdo.
+
+## Principais Tags Semânticas
+
+### 1. `<header>`
+Define o cabeçalho da página ou de uma seção
+```html
+<header>
+    <h1>Nome do Site</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/sobre">Sobre</a></li>
+        </ul>
+    </nav>
+</header>
+```
+
+### 2. `<nav>`
+Define uma seção de navegação
+```html
+<nav>
+    <!-- Menu principal -->
+    <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/produtos">Produtos</a>
+        <a href="/contato">Contato</a>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb">
+        <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/produtos">Produtos</a></li>
+            <li aria-current="page">Produto Atual</li>
+        </ol>
+    </nav>
+</nav>
+```
+
+### 3. `<main>`
+Define o conteúdo principal da página
+```html
+<main>
+    <h1>Título Principal</h1>
+    <article>
+        <!-- Conteúdo principal -->
+    </article>
+    <aside>
+        <!-- Conteúdo relacionado -->
+    </aside>
+</main>
+```
+
+### 4. `<article>`
+Define um conteúdo independente e autocontido
+```html
+<article>
+    <header>
+        <h2>Título do Artigo</h2>
+        <time datetime="2024-11-05">5 de Novembro, 2024</time>
+        <address>Por <a href="/autor">Nome do Autor</a></address>
+    </header>
+
+    <section>
+        <!-- Conteúdo do artigo -->
+    </section>
+
+    <footer>
+        <!-- Meta informações, tags, etc -->
+    </footer>
+</article>
+```
+
+### 5. `<section>`
+Define uma seção temática do conteúdo
+```html
+<section>
+    <h2>Produtos em Destaque</h2>
+    <div class="products">
+        <!-- Lista de produtos -->
+    </div>
+</section>
+
+<section>
+    <h2>Comentários</h2>
+    <!-- Lista de comentários -->
+</section>
+```
+
+### 6. `<aside>`
+Define conteúdo relacionado mas separado do conteúdo principal
+```html
+<aside>
+    <h3>Artigos Relacionados</h3>
+    <ul>
+        <li><a href="#">Outro artigo</a></li>
+        <li><a href="#">Mais um artigo</a></li>
+    </ul>
+
+    <div class="widget">
+        <!-- Widget de redes sociais -->
+    </div>
+</aside>
+```
+
+### 7. `<footer>`
+Define o rodapé da página ou de uma seção
+```html
+<footer>
+    <div class="footer-content">
+        <section>
+            <h4>Contato</h4>
+            <address>
+                <a href="mailto:email@exemplo.com">email@exemplo.com</a>
+                <a href="tel:+5511999999999">+55 11 99999-9999</a>
+            </address>
+        </section>
+
+        <nav>
+            <h4>Links Úteis</h4>
+            <ul>
+                <li><a href="/privacidade">Política de Privacidade</a></li>
+                <li><a href="/termos">Termos de Uso</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="copyright">
+        <small>&copy; 2024 Nome da Empresa</small>
+    </div>
+</footer>
+```
+
+### 8. `<figure>` e `<figcaption>`
+Define uma ilustração, diagrama, foto, etc., com legenda
+```html
+<figure>
+    <img src="grafico.jpg" alt="Gráfico de vendas">
+    <figcaption>
+        Gráfico demonstrando o aumento de vendas em 2024
+    </figcaption>
+</figure>
+```
+
+### 9. `<time>`
+Define datas e horários
+```html
+<article>
+    <h2>Título do Post</h2>
+    <p>Publicado em <time datetime="2024-11-05T15:00:00">
+        5 de Novembro às 15:00
+    </time></p>
+</article>
+```
+
+### 10. `<mark>`
+Define texto destacado/marcado
+```html
+<p>
+    O prazo final é <mark>amanhã às 18h</mark>. 
+    Não se esqueça!
+</p>
+```
+
+## Estrutura Semântica Completa
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Semântica</title>
+</head>
+<body>
+    <!-- Cabeçalho do site -->
+    <header>
+        <h1>Nome do Site</h1>
+        <nav>
+            <!-- Menu principal -->
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <!-- Artigo principal -->
+        <article>
+            <header>
+                <h2>Título do Artigo</h2>
+                <time datetime="2024-11-05">5/11/2024</time>
+            </header>
+
+            <section>
+                <h3>Primeira Seção</h3>
+                <p>Conteúdo...</p>
+            </section>
+
+            <section>
+                <h3>Segunda Seção</h3>
+                <p>Mais conteúdo...</p>
+            </section>
+
+            <footer>
+                <!-- Metadados do artigo -->
+            </footer>
+        </article>
+
+        <!-- Barra lateral -->
+        <aside>
+            <section>
+                <h3>Artigos Relacionados</h3>
+                <!-- Links relacionados -->
+            </section>
+        </aside>
+    </main>
+
+    <!-- Rodapé do site -->
+    <footer>
+        <nav>
+            <!-- Links do rodapé -->
+        </nav>
+        <small>&copy; 2024</small>
+    </footer>
+</body>
+</html>
+```
+
+## Benefícios do HTML Semântico
+
+1. **Acessibilidade**: Facilita a leitura por leitores de tela
+2. **SEO**: Melhora o entendimento do conteúdo pelos buscadores
+3. **Manutenibilidade**: Código mais organizado e fácil de entender
+4. **Reutilização**: Estrutura clara para diferentes dispositivos
+5. **Consistência**: Padrão de desenvolvimento mais claro
+
+## Dicas de Uso
+
+1. Use `<header>`, `<footer>` e `<nav>` tanto no nível da página quanto dentro de `<article>` e `<section>`
+2. `<main>` deve aparecer apenas uma vez por página
+3. `<article>` deve fazer sentido independentemente do contexto
+4. Use `<section>` para agrupar conteúdo relacionado
+5. Use `<aside>` para conteúdo complementar mas não essencial
