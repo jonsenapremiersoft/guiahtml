@@ -9,6 +9,8 @@
 [5. Tag DIV](#tag-div)   
 [6. Tags Semânticas](#tags-semânticas)   
 [7. Formulários](#formulários)   
+[8. Guia de Acessibilidade](#guia-de-acessibilidade)   
+
 
 
 
@@ -1808,4 +1810,378 @@ Define texto destacado/marcado
 <span id="email-error" role="alert">
     Email inválido
 </span>
+```
+
+
+# Guia de Acessibilidade
+
+## 1. Estrutura Semântica Base
+
+### Estrutura Básica Acessível
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título Descritivo da Página</title>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">
+        Pular para o conteúdo principal
+    </a>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Menu principal">
+            <!-- Navegação -->
+        </nav>
+    </header>
+
+    <main id="main-content" role="main" tabindex="-1">
+        <!-- Conteúdo principal -->
+    </main>
+</body>
+</html>
+```
+
+## 2. WAI-ARIA Roles, Estados e Propriedades
+
+### Roles (Papéis)
+```html
+<!-- Landmarks (Pontos de referência) -->
+<header role="banner">
+<nav role="navigation">
+<main role="main">
+<aside role="complementary">
+<footer role="contentinfo">
+
+<!-- Elementos Interativos -->
+<div role="button">
+<div role="tab">
+<div role="tabpanel">
+<div role="dialog">
+<div role="alert">
+```
+
+### Estados e Propriedades
+```html
+<!-- Estados -->
+<button aria-expanded="false">
+<div aria-hidden="true">
+<input aria-invalid="true">
+<tab aria-selected="true">
+
+<!-- Propriedades -->
+<button aria-label="Fechar">
+<input aria-describedby="help-text">
+<div aria-labelledby="title">
+```
+
+## 3. Componentes Acessíveis
+
+### Menu de Navegação
+```html
+<nav role="navigation" aria-label="Menu principal">
+    <ul role="menubar">
+        <li role="none">
+            <a role="menuitem" href="/" aria-current="page">
+                Home
+            </a>
+        </li>
+        <li role="none">
+            <button 
+                role="menuitem" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+            >
+                Produtos
+            </button>
+            <ul role="menu" aria-hidden="true">
+                <li role="none">
+                    <a role="menuitem" href="/produtos/novo">
+                        Novos
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+```
+
+### Modal Dialog
+```html
+<div 
+    role="dialog" 
+    aria-labelledby="dialog-title" 
+    aria-describedby="dialog-desc"
+    aria-modal="true"
+>
+    <h2 id="dialog-title">Título do Modal</h2>
+    <p id="dialog-desc">Descrição do modal</p>
+    
+    <button 
+        onclick="closeDialog()" 
+        aria-label="Fechar modal"
+    >
+        ×
+    </button>
+</div>
+```
+
+### Tabs
+```html
+<div class="tabs">
+    <div role="tablist" aria-label="Seções de conteúdo">
+        <button 
+            role="tab" 
+            aria-selected="true" 
+            aria-controls="panel-1"
+            id="tab-1"
+        >
+            Aba 1
+        </button>
+        <button 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="panel-2"
+            id="tab-2"
+            tabindex="-1"
+        >
+            Aba 2
+        </button>
+    </div>
+
+    <div 
+        role="tabpanel" 
+        id="panel-1" 
+        aria-labelledby="tab-1"
+    >
+        Conteúdo da aba 1
+    </div>
+    <div 
+        role="tabpanel" 
+        id="panel-2" 
+        aria-labelledby="tab-2"
+        hidden
+    >
+        Conteúdo da aba 2
+    </div>
+</div>
+```
+
+## 4. Imagens e Mídia
+
+### Imagens Acessíveis
+```html
+<!-- Imagem informativa -->
+<img 
+    src="grafico-vendas.jpg" 
+    alt="Gráfico mostrando aumento de 50% nas vendas em 2024"
+>
+
+<!-- Imagem decorativa -->
+<img src="decorativa.jpg" alt="" role="presentation">
+
+<!-- Imagem com descrição longa -->
+<figure>
+    <img 
+        src="infografico.jpg" 
+        alt="Infográfico"
+        aria-describedby="desc-infografico"
+    >
+    <figcaption id="desc-infografico">
+        Descrição detalhada do infográfico...
+    </figcaption>
+</figure>
+```
+
+### Vídeos e Áudio
+```html
+<video controls>
+    <source src="video.mp4" type="video/mp4">
+    <track 
+        kind="captions" 
+        src="legendas.vtt" 
+        srclang="pt-BR" 
+        label="Português"
+    >
+    <track 
+        kind="descriptions" 
+        src="descricoes.vtt" 
+        srclang="pt-BR" 
+        label="Descrições de áudio"
+    >
+</video>
+```
+
+## 5. Formulários Acessíveis
+
+### Campos de Formulário
+```html
+<form>
+    <!-- Grupo de campos -->
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+
+        <!-- Campo com label -->
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input 
+                type="text" 
+                id="nome"
+                name="nome"
+                required
+                aria-required="true"
+                aria-describedby="nome-help"
+            >
+            <small id="nome-help">
+                Digite seu nome completo
+            </small>
+        </div>
+
+        <!-- Campo com erro -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input 
+                type="email" 
+                id="email"
+                name="email"
+                aria-invalid="true"
+                aria-errormessage="email-error"
+            >
+            <span 
+                id="email-error" 
+                role="alert"
+                class="error"
+            >
+                Email inválido
+            </span>
+        </div>
+    </fieldset>
+</form>
+```
+
+## 6. Notificações e Alertas
+
+### Mensagens de Status
+```html
+<!-- Alerta -->
+<div 
+    role="alert" 
+    aria-live="assertive"
+>
+    Erro ao salvar alterações
+</div>
+
+<!-- Status -->
+<div 
+    role="status" 
+    aria-live="polite"
+>
+    Alterações salvas com sucesso
+</div>
+
+<!-- Progresso -->
+<div 
+    role="progressbar" 
+    aria-valuenow="75" 
+    aria-valuemin="0" 
+    aria-valuemax="100"
+>
+    75% completo
+</div>
+```
+
+## 7. Links e Botões
+
+### Links Acessíveis
+```html
+<!-- Link com descrição clara -->
+<a href="politica.html">
+    Leia nossa política de privacidade
+</a>
+
+<!-- Link que abre em nova janela -->
+<a 
+    href="https://exemplo.com" 
+    target="_blank"
+    rel="noopener"
+    aria-label="Visitar exemplo.com (abre em nova janela)"
+>
+    Visitar site
+</a>
+```
+
+### Botões Acessíveis
+```html
+<!-- Botão com ícone -->
+<button aria-label="Fechar">
+    <i class="icon-close" aria-hidden="true"></i>
+</button>
+
+<!-- Botão toggle -->
+<button 
+    aria-pressed="false"
+    aria-label="Ativar modo escuro"
+>
+    Modo Escuro
+</button>
+```
+
+## 8. Boas Práticas
+
+### Hierarquia de Cabeçalhos
+```html
+<main>
+    <h1>Título Principal</h1>
+    
+    <section>
+        <h2>Subtítulo</h2>
+        <h3>Título menor</h3>
+    </section>
+</main>
+```
+
+### Skip Links
+```html
+<style>
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+</style>
+
+<a href="#main-content" class="skip-link">
+    Pular para o conteúdo principal
+</a>
+```
+
+### Texto Escondido para Leitores de Tela
+```html
+<!-- Visualmente escondido mas disponível para leitores -->
+<span class="sr-only">
+    Informação adicional para leitores de tela
+</span>
+
+<style>
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+</style>
 ```
