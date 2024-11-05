@@ -3,7 +3,9 @@
 # Sumário
 
 [1. Tags Estruturais](#tags-estruturais)   
-[2. Tags de Texto Essenciais](#tags-de-texto-essenciais)
+[2. Tags de Texto Essenciais](#tags-de-texto-essenciais)   
+[3. Tags de Listas](#tags-de-listas)   
+
 
 # Tags Estruturais
 
@@ -288,6 +290,20 @@
 
 # Tags de Texto Essenciais
 
+## Tags de Título
+
+### `<h1>` a `<h6>`
+- **Função**: Define títulos e subtítulos hierárquicos
+- **Exemplo**:
+```html
+<h1>Título Principal</h1>
+<h2>Subtítulo</h2>
+<h3>Título Menor 3</h3>
+<h4>Título Menor 4</h4>
+<h5>Título Menor 5</h3>
+<h6>Título Menor 6</h3>
+```
+
 ## Tags de Formatação Básica
 
 ### `<strong>`
@@ -445,4 +461,219 @@
 ```
 
 
+# Tags HTML de Listas
 
+## 1. Lista Não Ordenada `<ul>`
+
+### Básica
+```html
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+```
+
+### Com Classes e Estilos
+```html
+<ul class="menu-list">
+    <li class="menu-item">Home</li>
+    <li class="menu-item active">Produtos</li>
+    <li class="menu-item disabled">Contato</li>
+</ul>
+```
+
+### Aninhada
+```html
+<ul>
+    <li>Frutas
+        <ul>
+            <li>Cítricas
+                <ul>
+                    <li>Laranja</li>
+                    <li>Limão</li>
+                </ul>
+            </li>
+            <li>Tropicais
+                <ul>
+                    <li>Manga</li>
+                    <li>Banana</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+```
+
+## 2. Lista Ordenada `<ol>`
+
+### Básica
+```html
+<ol>
+    <li>Primeiro passo</li>
+    <li>Segundo passo</li>
+    <li>Terceiro passo</li>
+</ol>
+```
+
+### Com Atributos Específicos
+```html
+<!-- start: início da contagem -->
+<!-- type: tipo de marcador -->
+<!-- reversed: ordem reversa -->
+<ol start="5" type="A" reversed>
+    <li>Item E</li>
+    <li>Item D</li>
+    <li>Item C</li>
+</ol>
+```
+
+### Tipos de Marcadores
+```html
+<!-- Números (padrão) -->
+<ol type="1">
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ol>
+
+<!-- Letras maiúsculas -->
+<ol type="A">
+    <li>Item A</li>
+    <li>Item B</li>
+</ol>
+
+<!-- Letras minúsculas -->
+<ol type="a">
+    <li>Item a</li>
+    <li>Item b</li>
+</ol>
+
+<!-- Números romanos maiúsculos -->
+<ol type="I">
+    <li>Item I</li>
+    <li>Item II</li>
+</ol>
+
+<!-- Números romanos minúsculos -->
+<ol type="i">
+    <li>Item i</li>
+    <li>Item ii</li>
+</ol>
+```
+
+## 3. Lista de Definição `<dl>`
+
+### Básica
+```html
+<dl>
+    <dt>HTML</dt>
+    <dd>HyperText Markup Language - linguagem para estruturar páginas web</dd>
+    
+    <dt>CSS</dt>
+    <dd>Cascading Style Sheets - linguagem para estilizar páginas web</dd>
+</dl>
+```
+
+### Múltiplas Definições
+```html
+<dl>
+    <dt>Front-end</dt>
+    <dd>Desenvolvimento da interface do usuário</dd>
+    <dd>Parte visual e interativa de um site</dd>
+    
+    <dt>Back-end</dt>
+    <dd>Desenvolvimento do servidor</dd>
+    <dd>Processamento de dados e lógica de negócio</dd>
+</dl>
+```
+
+## 4. Usos Práticos
+
+### Menu de Navegação
+```html
+<nav>
+    <ul class="nav-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/produtos">Produtos</a>
+            <ul class="submenu">
+                <li><a href="/novo">Novos</a></li>
+                <li><a href="/promocao">Promoções</a></li>
+            </ul>
+        </li>
+        <li><a href="/contato">Contato</a></li>
+    </ul>
+</nav>
+```
+
+### Lista de Links Sociais
+```html
+<ul class="social-links">
+    <li>
+        <a href="https://facebook.com">
+            <i class="fa fa-facebook"></i>
+            <span>Facebook</span>
+        </a>
+    </li>
+    <li>
+        <a href="https://twitter.com">
+            <i class="fa fa-twitter"></i>
+            <span>Twitter</span>
+        </a>
+    </li>
+</ul>
+```
+
+### Lista de Etapas/Processo
+```html
+<ol class="process-steps">
+    <li class="completed">
+        <span class="step">1</span>
+        <span class="title">Carrinho</span>
+    </li>
+    <li class="active">
+        <span class="step">2</span>
+        <span class="title">Pagamento</span>
+    </li>
+    <li>
+        <span class="step">3</span>
+        <span class="title">Confirmação</span>
+    </li>
+</ol>
+```
+
+### Lista de FAQ
+```html
+<dl class="faq-list">
+    <dt class="faq-question">Como faço para criar uma conta?</dt>
+    <dd class="faq-answer">
+        Para criar uma conta, clique no botão "Registrar" no topo da página...
+    </dd>
+    
+    <dt class="faq-question">Qual o prazo de entrega?</dt>
+    <dd class="faq-answer">
+        O prazo de entrega varia de acordo com sua localização...
+    </dd>
+</dl>
+```
+
+## 5. Acessibilidade em Listas
+
+```html
+<!-- Lista de navegação com ARIA -->
+<ul role="menubar" aria-label="Menu principal">
+    <li role="menuitem" aria-current="page">Home</li>
+    <li role="menuitem">
+        Produtos
+        <ul role="menu" aria-label="Submenu de produtos">
+            <li role="menuitem">Item 1</li>
+            <li role="menuitem">Item 2</li>
+        </ul>
+    </li>
+</ul>
+
+<!-- Lista de etapas com ARIA -->
+<ol role="list" aria-label="Etapas do processo">
+    <li aria-current="step">Etapa atual</li>
+    <li>Próxima etapa</li>
+</ol>
+```
