@@ -10,6 +10,7 @@
 [6. Tags Semânticas](#tags-semânticas)   
 [7. Formulários](#formulários)   
 [8. Guia de Acessibilidade](#guia-de-acessibilidade)   
+[9. Links](#links)   
 
 
 
@@ -2184,4 +2185,320 @@ Define texto destacado/marcado
     border: 0;
 }
 </style>
+```
+
+
+# Links
+
+## 1. Sintaxe Básica
+
+### Link Simples
+```html
+<a href="pagina.html">Texto do Link</a>
+```
+
+### Atributos Essenciais
+```html
+<a 
+    href="url-destino"          <!-- URL de destino -->
+    target="_blank"             <!-- Onde abrir o link -->
+    rel="noopener noreferrer"   <!-- Segurança para links externos -->
+    title="Descrição do link"   <!-- Tooltip -->
+>
+    Texto do Link
+</a>
+```
+
+## 2. Tipos de URLs
+
+### Links Absolutos
+```html
+<!-- Links externos -->
+<a href="https://www.exemplo.com">Site Externo</a>
+
+<!-- Links com protocolo específico -->
+<a href="https://exemplo.com">HTTPS</a>
+<a href="http://exemplo.com">HTTP</a>
+<a href="ftp://servidor.com">FTP</a>
+```
+
+### Links Relativos
+```html
+<!-- Mesmo diretório -->
+<a href="pagina.html">Página</a>
+
+<!-- Subdiretório -->
+<a href="blog/post.html">Post</a>
+
+<!-- Diretório anterior -->
+<a href="../index.html">Voltar</a>
+
+<!-- Raiz do site -->
+<a href="/">Home</a>
+```
+
+### Links Internos (Âncoras)
+```html
+<!-- Link para ID na página -->
+<a href="#secao1">Ir para Seção 1</a>
+
+<!-- Seção alvo -->
+<section id="secao1">
+    Conteúdo da Seção 1
+</section>
+
+<!-- Link para topo da página -->
+<a href="#">Voltar ao topo</a>
+```
+
+## 3. Usos Especiais
+
+### Links de Email
+```html
+<!-- Email simples -->
+<a href="mailto:email@exemplo.com">
+    Enviar email
+</a>
+
+<!-- Email com campos preenchidos -->
+<a href="mailto:email@exemplo.com?subject=Assunto&body=Corpo do email">
+    Enviar email personalizado
+</a>
+```
+
+### Links de Telefone
+```html
+<!-- Telefone -->
+<a href="tel:+5511999999999">
+    (11) 99999-9999
+</a>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/5511999999999">
+    WhatsApp
+</a>
+```
+
+### Links para Download
+```html
+<!-- Download simples -->
+<a href="arquivo.pdf" download>
+    Baixar PDF
+</a>
+
+<!-- Download com nome personalizado -->
+<a href="arquivo.pdf" download="novo-nome.pdf">
+    Baixar PDF
+</a>
+```
+
+## 4. Estilos de Link
+
+### Estados dos Links
+```html
+<style>
+/* Link não visitado */
+a:link {
+    color: blue;
+}
+
+/* Link visitado */
+a:visited {
+    color: purple;
+}
+
+/* Mouse sobre o link */
+a:hover {
+    color: red;
+}
+
+/* Link ativo (durante o clique) */
+a:active {
+    color: orange;
+}
+</style>
+```
+
+### Links com Ícones
+```html
+<!-- Link com ícone -->
+<a href="documento.pdf" class="pdf-link">
+    <img src="pdf-icon.svg" alt="">
+    Baixar documento
+</a>
+
+<!-- Link com ícone de fonte -->
+<a href="https://twitter.com" class="social-link">
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+    <span>Twitter</span>
+</a>
+```
+
+## 5. Acessibilidade em Links
+
+### Links Acessíveis
+```html
+<!-- Link descritivo -->
+<a href="politica.html">
+    Leia nossa política de privacidade
+</a>
+
+<!-- Link com descrição adicional -->
+<a href="download.zip" aria-label="Baixar arquivos do projeto (10MB)">
+    Baixar arquivos
+</a>
+
+<!-- Link externo com aviso -->
+<a 
+    href="https://exemplo.com" 
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visitar exemplo.com (abre em nova janela)"
+>
+    Visitar site externo
+</a>
+```
+
+## 6. Padrões Comuns
+
+### Menu de Navegação
+```html
+<nav>
+    <ul class="nav-menu">
+        <li>
+            <a href="/" aria-current="page">Home</a>
+        </li>
+        <li>
+            <a href="/produtos">Produtos</a>
+        </li>
+        <li>
+            <a href="/contato">Contato</a>
+        </li>
+    </ul>
+</nav>
+```
+
+### Links de Cartão
+```html
+<article class="card">
+    <a href="/post" class="card-link">
+        <h2>Título do Post</h2>
+        <img src="imagem.jpg" alt="Descrição">
+        <p>Resumo do post...</p>
+    </a>
+</article>
+```
+
+### Breadcrumbs
+```html
+<nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/produtos">Produtos</a>
+        </li>
+        <li aria-current="page">
+            Produto Atual
+        </li>
+    </ol>
+</nav>
+```
+
+## 7. Boas Práticas
+
+### Segurança
+```html
+<!-- Links externos -->
+<a 
+    href="https://exemplo.com" 
+    target="_blank" 
+    rel="noopener noreferrer"
+>
+    Site Externo
+</a>
+
+<!-- Links para downloads -->
+<a 
+    href="arquivo.pdf" 
+    download 
+    type="application/pdf"
+>
+    Baixar PDF
+</a>
+```
+
+### Performance
+```html
+<!-- Preload de páginas -->
+<a 
+    href="proxima-pagina.html" 
+    rel="prerender"
+>
+    Próxima Página
+</a>
+
+<!-- Prefetch de recursos -->
+<a 
+    href="pagina.html" 
+    rel="prefetch"
+>
+    Carregar Antecipadamente
+</a>
+```
+
+### SEO
+```html
+<!-- Links internos -->
+<a href="/pagina" rel="canonical">
+    Página Principal
+</a>
+
+<!-- Links para outros idiomas -->
+<a href="/en" hreflang="en" rel="alternate">
+    English Version
+</a>
+```
+
+## 8. Exemplos Práticos
+
+### Link de Compartilhamento
+```html
+<!-- Compartilhar no Twitter -->
+<a 
+    href="https://twitter.com/share?url=https://meusite.com&text=Texto"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Compartilhar no Twitter"
+>
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+    Compartilhar
+</a>
+```
+
+### Link de Ação
+```html
+<!-- Link que parece botão -->
+<a 
+    href="/comprar"
+    class="button"
+    role="button"
+>
+    Comprar Agora
+</a>
+```
+
+### Link com Preview
+```html
+<a 
+    href="/artigo"
+    class="preview-link"
+    data-preview="Prévia do conteúdo..."
+>
+    Ler Artigo
+    <span class="preview-tooltip">
+        Prévia do conteúdo...
+    </span>
+</a>
 ```
