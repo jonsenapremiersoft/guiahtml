@@ -5,6 +5,7 @@
 [1. Tags Estruturais](#tags-estruturais)   
 [2. Tags de Texto Essenciais](#tags-de-texto-essenciais)   
 [3. Tags de Listas](#tags-de-listas)   
+[4. Tags de Mídia](#tags-de-mídia)   
 
 
 # Tags Estruturais
@@ -306,6 +307,20 @@
 
 ## Tags de Formatação Básica
 
+### `<p>`
+- **Função**: Define um parágrafo
+- **Exemplo**:
+```html
+<p>Este é um parágrafo com texto...</p>
+```
+
+### `<span>`
+- **Função**: Container inline para texto
+- **Exemplo**:
+```html
+<p>Texto com <span class="destaque">palavra destacada</span></p>
+```
+
 ### `<strong>`
 - **Função**: Indica forte importância, texto com ênfase forte (substitui o antigo `<b>`)
 - **Exemplo**:
@@ -461,7 +476,7 @@
 ```
 
 
-# Tags HTML de Listas
+# Tags de Listas
 
 ## 1. Lista Não Ordenada `<ul>`
 
@@ -676,4 +691,296 @@
     <li aria-current="step">Etapa atual</li>
     <li>Próxima etapa</li>
 </ol>
+```
+
+
+# Tags de Mídia
+
+## 1. Tag `<img>` para Imagens
+
+### Básica
+```html
+<img src="imagem.jpg" alt="Descrição da imagem">
+```
+
+### Com Atributos Completos
+```html
+<img 
+    src="imagem.jpg"
+    alt="Descrição detalhada da imagem"
+    width="800"
+    height="600"
+    loading="lazy"
+    decoding="async"
+    class="imagem-responsiva"
+>
+```
+
+### Com Picture para Responsividade
+```html
+<picture>
+    <!-- Ordem: mobile primeiro -->
+    <source 
+        media="(max-width: 768px)" 
+        srcset="imagem-mobile.jpg"
+    >
+    <source 
+        media="(max-width: 1200px)" 
+        srcset="imagem-tablet.jpg"
+    >
+    <source 
+        media="(min-width: 1201px)" 
+        srcset="imagem-desktop.jpg"
+    >
+    <!-- Fallback para navegadores que não suportam picture -->
+    <img src="imagem-fallback.jpg" alt="Descrição">
+</picture>
+```
+
+### Com Srcset para Diferentes Resoluções
+```html
+<img 
+    src="imagem-pequena.jpg"
+    srcset="
+        imagem-pequena.jpg 300w,
+        imagem-media.jpg 600w,
+        imagem-grande.jpg 900w
+    "
+    sizes="
+        (max-width: 320px) 280px,
+        (max-width: 640px) 580px,
+        800px
+    "
+    alt="Imagem responsiva"
+>
+```
+
+### Com Figure e Figcaption
+```html
+<figure>
+    <img 
+        src="grafico.jpg" 
+        alt="Gráfico de vendas do último trimestre"
+    >
+    <figcaption>
+        Vendas aumentaram 25% no último trimestre
+    </figcaption>
+</figure>
+```
+
+## 2. Tag `<video>` para Vídeos
+
+### Básico
+```html
+<video src="video.mp4" controls></video>
+```
+
+### Com Múltiplas Fontes e Atributos
+```html
+<video 
+    controls
+    width="800"
+    height="450"
+    poster="thumbnail.jpg"
+    preload="metadata"
+    autoplay
+    muted
+    loop
+    playsinline
+>
+    <source src="video.mp4" type="video/mp4">
+    <source src="video.webm" type="video/webm">
+    <track 
+        src="legendas-pt.vtt" 
+        kind="subtitles" 
+        srclang="pt" 
+        label="Português"
+    >
+    <!-- Mensagem de fallback -->
+    Seu navegador não suporta o elemento de vídeo.
+</video>
+```
+
+### Com Picture-in-Picture
+```html
+<video 
+    id="meu-video"
+    controls
+    pip="true"
+    autopictureinpicture
+>
+    <source src="video.mp4" type="video/mp4">
+</video>
+```
+
+## 3. Tag `<audio>` para Áudio
+
+### Básico
+```html
+<audio src="audio.mp3" controls></audio>
+```
+
+### Com Múltiplas Fontes e Atributos
+```html
+<audio 
+    controls
+    preload="auto"
+    loop
+    muted
+>
+    <source src="audio.mp3" type="audio/mpeg">
+    <source src="audio.ogg" type="audio/ogg">
+    <source src="audio.wav" type="audio/wav">
+    <!-- Mensagem de fallback -->
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+```
+
+## 4. Elementos de Faixa (Track)
+
+### Para Vídeo com Múltiplas Legendas
+```html
+<video controls>
+    <source src="video.mp4" type="video/mp4">
+    <track 
+        kind="subtitles" 
+        src="legendas-pt.vtt" 
+        srclang="pt" 
+        label="Português" 
+        default
+    >
+    <track 
+        kind="subtitles" 
+        src="legendas-en.vtt" 
+        srclang="en" 
+        label="English"
+    >
+    <track 
+        kind="descriptions" 
+        src="descricoes.vtt" 
+        srclang="pt" 
+        label="Descrições"
+    >
+    <track 
+        kind="chapters" 
+        src="capitulos.vtt" 
+        srclang="pt" 
+        label="Capítulos"
+    >
+</video>
+```
+
+## 5. Incorporação de Mídia Externa
+
+### YouTube
+```html
+<iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/VIDEO_ID" 
+    title="Título do vídeo do YouTube"
+    frameborder="0" 
+    allow="
+        accelerometer; 
+        autoplay; 
+        clipboard-write; 
+        encrypted-media; 
+        gyroscope; 
+        picture-in-picture
+    " 
+    allowfullscreen
+></iframe>
+```
+
+### Vimeo
+```html
+<iframe 
+    src="https://player.vimeo.com/video/VIDEO_ID" 
+    width="640" 
+    height="360" 
+    frameborder="0" 
+    allow="autoplay; fullscreen" 
+    allowfullscreen
+></iframe>
+```
+
+## 6. Boas Práticas
+
+### Lazy Loading de Imagens
+```html
+<!-- Com atributo loading -->
+<img 
+    src="imagem.jpg" 
+    loading="lazy" 
+    alt="Imagem com lazy loading"
+>
+
+<!-- Com Intersection Observer (via data attribute) -->
+<img 
+    data-src="imagem.jpg" 
+    class="lazy" 
+    alt="Imagem para lazy loading via JS"
+>
+```
+
+### Otimização de Imagens Responsivas
+```html
+<!-- Art Direction -->
+<picture>
+    <!-- Imagem para mobile em retrato -->
+    <source 
+        media="(max-width: 768px) and (orientation: portrait)"
+        srcset="mobile-portrait.jpg"
+    >
+    
+    <!-- Imagem para mobile em paisagem -->
+    <source 
+        media="(max-width: 768px) and (orientation: landscape)"
+        srcset="mobile-landscape.jpg"
+    >
+    
+    <!-- Imagem padrão -->
+    <img src="default.jpg" alt="Imagem responsiva">
+</picture>
+
+<!-- Densidade de Pixels -->
+<img 
+    src="imagem.jpg"
+    srcset="
+        imagem.jpg 1x,
+        imagem@2x.jpg 2x,
+        imagem@3x.jpg 3x
+    "
+    alt="Imagem para diferentes densidades de pixel"
+>
+```
+
+### Acessibilidade em Mídia
+```html
+<!-- Vídeo com legendas e descrições -->
+<video controls>
+    <source src="video.mp4" type="video/mp4">
+    
+    <!-- Legendas -->
+    <track 
+        kind="subtitles" 
+        src="legendas.vtt" 
+        srclang="pt" 
+        label="Legendas"
+        default
+    >
+    
+    <!-- Descrições de áudio -->
+    <track 
+        kind="descriptions" 
+        src="descricoes.vtt" 
+        srclang="pt" 
+        label="Descrições de áudio"
+    >
+    
+    <!-- Transcrição -->
+    <a href="transcricao.html">
+        Transcrição do vídeo
+    </a>
+</video>
 ```
