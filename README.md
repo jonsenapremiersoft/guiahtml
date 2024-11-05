@@ -1,6 +1,11 @@
 # Guia HTML
 
-# Tags Estruturais e Head HTML
+# Sumário
+
+[1. Tags Estruturais](#tags-estruturais)   
+[2. Tags de Texto Essenciais](#tags-de-texto-essenciais)
+
+# Tags Estruturais
 
 ## Estrutura Básica
 ```html
@@ -99,11 +104,7 @@
 
 ### Para a tag `<html>`
 ```html
-<html 
-    lang="pt-BR" 
-    dir="ltr" 
-    class="no-js"
->
+<html lang="pt-BR">
 ```
 
 ### Para meta viewport
@@ -285,7 +286,163 @@
 ```
 
 
-    
-    <!-- Scripts -->
-</head>
+# Tags de Texto Essenciais
+
+## Tags de Formatação Básica
+
+### `<strong>`
+- **Função**: Indica forte importância, texto com ênfase forte (substitui o antigo `<b>`)
+- **Exemplo**:
+```html
+<p>Este é um <strong>aviso importante</strong> para todos.</p>
 ```
+
+### `<em>`
+- **Função**: Dá ênfase ao texto (substitui o antigo `<i>`)
+- **Exemplo**:
+```html
+<p>Você <em>realmente</em> precisa ver isso.</p>
+```
+
+### `<mark>`
+- **Função**: Destaca texto como se estivesse marcado com marca-texto
+- **Exemplo**:
+```html
+<p>O <mark>prazo final</mark> é amanhã.</p>
+```
+
+### `<small>`
+- **Função**: Representa comentários à parte, como texto legal ou notas de rodapé
+- **Exemplo**:
+```html
+<p>Preço: R$99,90 <small>(frete não incluso)</small></p>
+```
+
+### `<del>`
+- **Função**: Texto deletado/removido
+- **Exemplo**:
+```html
+<p>Preço: <del>R$100,00</del> R$80,00</p>
+```
+
+### `<ins>`
+- **Função**: Texto inserido/adicionado
+- **Exemplo**:
+```html
+<p>O evento será em <del>março</del> <ins>abril</ins>.</p>
+```
+
+## Tags para Texto Técnico
+
+### `<code>`
+- **Função**: Representa código de computador
+- **Exemplo**:
+```html
+<p>Use a função <code>console.log()</code> para debugar.</p>
+```
+
+### `<pre>`
+- **Função**: Preserva formatação do texto (espaços e quebras de linha)
+- **Exemplo**:
+```html
+<pre>
+  function exemplo() {
+    console.log("olá");
+  }
+</pre>
+```
+
+### `<kbd>`
+- **Função**: Representa entrada do teclado
+- **Exemplo**:
+```html
+<p>Pressione <kbd>Ctrl</kbd> + <kbd>C</kbd> para copiar.</p>
+```
+
+### `<samp>`
+- **Função**: Representa saída de programa/script
+- **Exemplo**:
+```html
+<p>Mensagem de erro: <samp>404 Not Found</samp></p>
+```
+
+### `<var>`
+- **Função**: Representa uma variável matemática ou de programação
+- **Exemplo**:
+```html
+<p>A equação é <var>x</var> = <var>y</var> + 2</p>
+```
+
+## Tags de Citação
+
+### `<blockquote>`
+- **Função**: Citação longa em bloco
+- **Exemplo**:
+```html
+<blockquote cite="https://fonte.com">
+  <p>Uma longa citação que ocupa várias linhas...</p>
+</blockquote>
+```
+
+### `<q>`
+- **Função**: Citação curta em linha
+- **Exemplo**:
+```html
+<p>Como dizia minha avó: <q>Mais vale um pássaro na mão...</q></p>
+```
+
+### `<cite>`
+- **Função**: Referência a um trabalho criativo
+- **Exemplo**:
+```html
+<p><cite>Dom Casmurro</cite> foi escrito por Machado de Assis.</p>
+```
+
+## Tags de Definição
+
+### `<dfn>`
+- **Função**: Marca um termo sendo definido
+- **Exemplo**:
+```html
+<p><dfn>HTML</dfn> é uma linguagem de marcação para criar páginas web.</p>
+```
+
+### `<abbr>`
+- **Função**: Define uma abreviação
+- **Exemplo**:
+```html
+<p><abbr title="World Wide Web">WWW</abbr> foi criada por Tim Berners-Lee.</p>
+```
+
+## Tags de Formatação Especial
+
+### `<sub>`
+- **Função**: Texto subscrito
+- **Exemplo**:
+```html
+<p>H<sub>2</sub>O é a fórmula da água.</p>
+```
+
+### `<sup>`
+- **Função**: Texto sobrescrito
+- **Exemplo**:
+```html
+<p>2<sup>3</sup> é igual a 8.</p>
+```
+
+### `<bdi>` e `<bdo>`
+- **Função**: Controle de direção do texto (útil para textos em árabe, hebraico, etc.)
+- **Exemplo**:
+```html
+<p><bdo dir="rtl">Este texto está da direita para esquerda</bdo></p>
+```
+
+### `<wbr>`
+- **Função**: Possível ponto de quebra de linha
+- **Exemplo**:
+```html
+<p>www.exemplo<wbr>.com<wbr>/pagina<wbr>/muito<wbr>/longa</p>
+```
+
+
+
