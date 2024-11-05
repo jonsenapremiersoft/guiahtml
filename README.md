@@ -8,6 +8,7 @@
 [4. Tags de Mídia](#tags-de-mídia)   
 [5. Tag DIV](#tag-div)   
 [6. Tags Semânticas](#tags-semânticas)   
+[7. Formulários](#formulários)   
 
 
 
@@ -1461,3 +1462,350 @@ Define texto destacado/marcado
 3. `<article>` deve fazer sentido independentemente do contexto
 4. Use `<section>` para agrupar conteúdo relacionado
 5. Use `<aside>` para conteúdo complementar mas não essencial
+
+
+# Formulários
+
+## Estrutura Básica
+
+### Formulário Simples
+```html
+<form action="/enviar" method="POST">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+    
+    <button type="submit">Enviar</button>
+</form>
+```
+
+## Principais Atributos do `<form>`
+```html
+<form 
+    action="/processar"           <!-- URL para envio dos dados -->
+    method="POST"                 <!-- Método HTTP (GET ou POST) -->
+    enctype="multipart/form-data" <!-- Para envio de arquivos -->
+    autocomplete="on"             <!-- Habilita autocompletar -->
+    novalidate                    <!-- Desabilita validação HTML5 -->
+    target="_blank"               <!-- Onde abrir a resposta -->
+>
+```
+
+## Tipos de Input
+
+### Texto e Números
+```html
+<!-- Texto simples -->
+<input type="text" name="nome" placeholder="Seu nome">
+
+<!-- Email -->
+<input type="email" name="email" required>
+
+<!-- Senha -->
+<input type="password" name="senha" minlength="8">
+
+<!-- Número -->
+<input type="number" name="idade" min="18" max="100">
+
+<!-- Telefone -->
+<input type="tel" name="telefone" pattern="[0-9]{11}">
+
+<!-- URL -->
+<input type="url" name="website">
+
+<!-- Pesquisa -->
+<input type="search" name="busca">
+```
+
+### Datas e Tempo
+```html
+<!-- Data -->
+<input type="date" name="data">
+
+<!-- Data e Hora -->
+<input type="datetime-local" name="data_hora">
+
+<!-- Mês -->
+<input type="month" name="mes">
+
+<!-- Semana -->
+<input type="week" name="semana">
+
+<!-- Hora -->
+<input type="time" name="hora">
+```
+
+### Seleção
+```html
+<!-- Checkbox -->
+<input type="checkbox" name="aceito" id="aceito">
+<label for="aceito">Aceito os termos</label>
+
+<!-- Radio -->
+<input type="radio" name="genero" value="m" id="masculino">
+<label for="masculino">Masculino</label>
+<input type="radio" name="genero" value="f" id="feminino">
+<label for="feminino">Feminino</label>
+
+<!-- Select -->
+<select name="estado">
+    <option value="">Selecione...</option>
+    <option value="SP">São Paulo</option>
+    <option value="RJ">Rio de Janeiro</option>
+</select>
+
+<!-- Select Múltiplo -->
+<select name="interesses" multiple>
+    <optgroup label="Frontend">
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">JavaScript</option>
+    </optgroup>
+    <optgroup label="Backend">
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+    </optgroup>
+</select>
+```
+
+### Arquivos e Mídia
+```html
+<!-- Upload de arquivo -->
+<input 
+    type="file" 
+    name="arquivo" 
+    accept=".pdf,.doc,.docx"
+    multiple
+>
+
+<!-- Upload de imagem -->
+<input 
+    type="file" 
+    name="foto" 
+    accept="image/*"
+    capture="user"
+>
+
+<!-- Cor -->
+<input type="color" name="cor">
+
+<!-- Range -->
+<input 
+    type="range" 
+    name="volume" 
+    min="0" 
+    max="100" 
+    step="5"
+>
+```
+
+## Elementos de Texto Longo
+```html
+<!-- Área de texto -->
+<textarea 
+    name="mensagem" 
+    rows="4" 
+    cols="50"
+    maxlength="500"
+    placeholder="Digite sua mensagem..."
+></textarea>
+
+<!-- Editor rico -->
+<div contenteditable="true" class="editor">
+    Conteúdo editável
+</div>
+```
+
+## Agrupamento e Layout
+```html
+<!-- Fieldset para agrupar campos relacionados -->
+<fieldset>
+    <legend>Dados Pessoais</legend>
+    
+    <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome">
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+    </div>
+</fieldset>
+```
+
+## Validação e Atributos de Controle
+
+### Validação Nativa
+```html
+<!-- Campos obrigatórios -->
+<input type="text" required>
+
+<!-- Padrões (Regex) -->
+<input 
+    type="text" 
+    pattern="[A-Za-z]{3,}" 
+    title="Mínimo de 3 letras"
+>
+
+<!-- Comprimento -->
+<input type="text" minlength="3" maxlength="50">
+
+<!-- Números -->
+<input type="number" min="0" max="100" step="5">
+```
+
+### Atributos de Controle
+```html
+<!-- Autocompletar -->
+<input type="text" autocomplete="name">
+
+<!-- Autofoco -->
+<input type="text" autofocus>
+
+<!-- Somente leitura -->
+<input type="text" readonly value="Não editável">
+
+<!-- Desabilitado -->
+<input type="text" disabled>
+
+<!-- Sugestões -->
+<input list="browsers" name="browser">
+<datalist id="browsers">
+    <option value="Chrome">
+    <option value="Firefox">
+    <option value="Safari">
+</datalist>
+```
+
+## Formulário Completo com Boas Práticas
+```html
+<form 
+    action="/enviar" 
+    method="POST" 
+    class="form"
+    novalidate
+>
+    <!-- Cabeçalho do formulário -->
+    <header class="form-header">
+        <h2>Cadastro</h2>
+        <p>Preencha seus dados</p>
+    </header>
+
+    <!-- Dados pessoais -->
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+
+        <div class="form-group">
+            <label for="nome">Nome Completo:</label>
+            <input 
+                type="text" 
+                id="nome" 
+                name="nome"
+                required
+                minlength="3"
+                autocomplete="name"
+            >
+            <small class="form-help">Digite seu nome completo</small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email"
+                required
+                autocomplete="email"
+            >
+        </div>
+    </fieldset>
+
+    <!-- Preferências -->
+    <fieldset>
+        <legend>Preferências</legend>
+
+        <div class="form-group">
+            <label>Interesses:</label>
+            
+            <div class="checkbox-group">
+                <input 
+                    type="checkbox" 
+                    id="interesse1" 
+                    name="interesses[]"
+                    value="tecnologia"
+                >
+                <label for="interesse1">Tecnologia</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input 
+                    type="checkbox" 
+                    id="interesse2" 
+                    name="interesses[]"
+                    value="design"
+                >
+                <label for="interesse2">Design</label>
+            </div>
+        </div>
+    </fieldset>
+
+    <!-- Arquivo -->
+    <fieldset>
+        <legend>Documentos</legend>
+
+        <div class="form-group">
+            <label for="foto">Foto de Perfil:</label>
+            <input 
+                type="file" 
+                id="foto" 
+                name="foto"
+                accept="image/*"
+                required
+            >
+            <small class="form-help">
+                Formatos aceitos: JPG, PNG. Máximo 5MB
+            </small>
+        </div>
+    </fieldset>
+
+    <!-- Botões -->
+    <div class="form-actions">
+        <button type="reset" class="btn-secondary">
+            Limpar
+        </button>
+        <button type="submit" class="btn-primary">
+            Enviar
+        </button>
+    </div>
+</form>
+```
+
+## Acessibilidade em Formulários
+
+```html
+<!-- Labels e aria-labels -->
+<label for="nome">Nome:</label>
+<input 
+    type="text" 
+    id="nome"
+    aria-required="true"
+    aria-describedby="nome-help"
+>
+<small id="nome-help">Digite seu nome completo</small>
+
+<!-- Grupos de campos -->
+<fieldset>
+    <legend class="sr-only">Opções de Contato</legend>
+    <!-- campos -->
+</fieldset>
+
+<!-- Mensagens de erro -->
+<input 
+    type="email" 
+    aria-invalid="true"
+    aria-errormessage="email-error"
+>
+<span id="email-error" role="alert">
+    Email inválido
+</span>
+```
